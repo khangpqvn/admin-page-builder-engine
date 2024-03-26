@@ -27,7 +27,7 @@ module.exports.sockets = {
   *                                                                          *
   ***************************************************************************/
 
-  // transports: [ 'websocket' ],
+  transports: ['websocket'],
 
 
   /***************************************************************************
@@ -42,13 +42,14 @@ module.exports.sockets = {
   *                                                                          *
   ***************************************************************************/
 
-  // beforeConnect: function(handshake, proceed) {
-  //
-  //   // `true` allows the socket to connect.
-  //   // (`false` would reject the connection)
-  //   return proceed(undefined, true);
-  //
-  // },
+  beforeConnect: function (handshake, proceed) {
+
+    // `true` allows the socket to connect.
+    // (`false` would reject the connection)
+    // log.info({ handshake })
+    return proceed(undefined, true);
+
+  },
 
 
   /***************************************************************************
@@ -60,12 +61,12 @@ module.exports.sockets = {
   *                                                                          *
   ***************************************************************************/
 
-  // afterDisconnect: function(session, socket, done) {
-  //
+  // afterDisconnect: function (session, socket, done) {
+  //   log.info({ afterDisconnect: session, socket })
   //   // By default: do nothing.
   //   // (but always trigger the callback)
   //   return done();
-  //
+
   // },
 
 

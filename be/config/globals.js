@@ -12,41 +12,47 @@
 module.exports.globals = {
 
   /****************************************************************************
-  *                                                                           *
-  * Whether to expose the locally-installed Lodash as a global variable       *
-  * (`_`), making  it accessible throughout your app.                         *
-  *                                                                           *
-  ****************************************************************************/
+   *                                                                           *
+   * Whether to expose the locally-installed Lodash as a global variable       *
+   * (`_`), making  it accessible throughout your app.                         *
+   *                                                                           *
+   ****************************************************************************/
 
   _: require('@sailshq/lodash'),
 
   /****************************************************************************
-  *                                                                           *
-  * This app was generated without a dependency on the "async" NPM package.   *
-  *                                                                           *
-  * > Don't worry!  This is totally unrelated to JavaScript's "async/await".  *
-  * > Your code can (and probably should) use `await` as much as possible.    *
-  *                                                                           *
-  ****************************************************************************/
+   *                                                                           *
+   * Whether to expose the locally-installed `async` as a global variable      *
+   * (`async`), making it accessible throughout your app.                      *
+   * (See the link above for help.)                                            *
+   *                                                                           *
+   ****************************************************************************/
 
-  async: false,
+  async: require('async'),
 
   /****************************************************************************
-  *                                                                           *
-  * Whether to expose each of your app's models as global variables.          *
-  * (See the link at the top of this file for more information.)              *
-  *                                                                           *
-  ****************************************************************************/
+   *                                                                           *
+   * Whether to expose each of your app's models as global variables.          *
+   * (See the link at the top of this file for more information.)              *
+   *                                                                           *
+   ****************************************************************************/
 
   models: true,
 
   /****************************************************************************
-  *                                                                           *
-  * Whether to expose the Sails app instance as a global variable (`sails`),  *
-  * making it accessible throughout your app.                                 *
-  *                                                                           *
-  ****************************************************************************/
+   *                                                                           *
+   * Whether to expose the Sails app instance as a global variable (`sails`),  *
+   * making it accessible throughout your app.                                 *
+   *                                                                           *
+   ****************************************************************************/
 
   sails: true,
 
+  /**
+   * Custome global variable
+   */
+
+  JWT_TOKEN_SECRET: (process.env.NODE_ENV === 'production' ? 'topcommenttoptrendingT0pStackOverFlow' : 't0pcommenttoptrendingT0pStackOverFlow'),
+  BASE_URL: process.env.BASE_URL || 'http://localhost:1337',
+  LOG_FILE: false,
 };
