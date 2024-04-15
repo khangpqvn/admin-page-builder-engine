@@ -1,0 +1,88 @@
+.arrayimage {
+    display: block;
+    width: 100%;
+    float: left;
+    padding: 10px 0px;
+
+    .photo-upload-item {
+        height: 140px;
+        width: 140px;
+        overflow: hidden;
+        float: left;
+        line-height: 140px;
+        position: relative;
+        transition: all .2s ease-in-out;
+
+        &.plus {
+            opacity: 0.4;
+            border: 3px dashed #909090;
+        }
+
+        .photo-delete__action {
+            z-index: 10;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: all .2s ease-in-out;
+            width: 50px;
+            height: 50px;
+            color: white;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+            opacity: 0;
+
+            &:hover {
+                opacity: 1;
+                color: white;
+
+            }
+
+            cursor:pointer;
+        }
+
+        .progress-indicator {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #0000008f;
+            height: 28px;
+            color: white;
+            line-height: 28px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        &:hover {
+            .photo-delete__action {
+                opacity: 1;
+            }
+
+            // &:not(item__upload) {
+            //     &:after {
+            //         background: rgba(0, 0, 0, .4);
+            //         content: "";
+            //         height: 100%;
+            //         position: absolute;
+            //         width: 100%;
+            //         left: 0;
+            //     }
+            // }
+        }
+
+        img {
+            position: absolute;
+            display: block;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            height: 100%;
+            min-width: 100%;
+            width: auto;
+            // height: 80px;
+            // width: 80px;
+        }
+    }
+}
