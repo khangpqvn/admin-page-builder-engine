@@ -4,64 +4,67 @@
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-const moment = require('moment');
-const uuidv1 = require('uuid/v1');
+const moment = require("moment");
+const uuidv1 = require("uuid/v1");
 module.exports = {
-  datastore: 'mongo',
+  // datastore: 'mongo',
   attributes: {
-    id: {
-      type: 'string',
-      // required: true,
-      // columnName: 'id'
-      columnName: '_id'
+    // id: {
+    //   type: 'string',
+    //   // required: true,
+    //   // columnName: 'id'
+    //   columnName: '_id'
 
-      //--------------------------------------------------------------------------
-      //  /\   Using MongoDB?
-      //  ||   Replace `id` above with this instead:
-      //
-      // ```
-      // id: { type: 'string', columnName: '_id' },
-      // ```
-    },
+    //   //--------------------------------------------------------------------------
+    //   //  /\   Using MongoDB?
+    //   //  ||   Replace `id` above with this instead:
+    //   //
+    //   // ```
+    //   // id: { type: 'string', columnName: '_id' },
+    //   // ```
+    // },
     requestUrl: {
-      type: 'string',
-      required: true
+      type: "string",
+      required: true,
     },
     requestMethod: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     requestHeader: {
-      type: 'json',
+      type: "json",
     },
     requestData: {
-      type: 'json', columnType: 'text'
+      type: "json",
+      columnType: "text",
     },
     responseStatusCode: {
-      type: 'number',
+      type: "number",
     },
     responseMessage: {
-      type: 'string', columnType: 'text'
+      type: "string",
+      columnType: "text",
     },
     apiDescription: {
-      type: 'string', columnType: 'text'
+      type: "string",
+      columnType: "text",
     },
     ip: {
-      type: 'string'
+      type: "string",
     },
     takeTime: {
-      type: 'number',
-      defaultsTo: 0
+      type: "number",
+      defaultsTo: 0,
     },
     userId: {
-      type: 'string'
+      type: "string",
     },
     authId: {
-      type: 'string'
+      type: "string",
     },
     apiVersion: {
-      type: 'string'
-    }
+      type: "string",
+    },
   },
 
   beforeCreate: function (createData, cb) {
@@ -71,13 +74,11 @@ module.exports = {
     return cb();
   },
   clearLog: async () => {
-    let createdAtBefore = moment().startOf('day').add(-15, 'days').valueOf();
+    let createdAtBefore = moment().startOf("day").add(-15, "days").valueOf();
     await LogCallApi.destroy({
       createdAt: {
-        '<': createdAtBefore
-      }
+        "<": createdAtBefore,
+      },
     });
-  }
-
-
+  },
 };

@@ -4,33 +4,33 @@
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-const uuidv1 = require('uuid/v1');
+const uuidv1 = require("uuid/v1");
 
 module.exports = {
-  datastore: 'mongo',
+  // datastore: 'mongo',
   attributes: {
-    id: {
-      type: 'string',
-      // required: true,
-      // columnName: 'id'
-      columnName: '_id'
+    // id: {
+    //   type: 'string',
+    //   // required: true,
+    //   // columnName: 'id'
+    //   columnName: '_id'
 
-      //--------------------------------------------------------------------------
-      //  /\   Using MongoDB?
-      //  ||   Replace `id` above with this instead:
-      //
-      // ```
-      // id: { type: 'string', columnName: '_id' },
-      // ```
-    },
+    //   //--------------------------------------------------------------------------
+    //   //  /\   Using MongoDB?
+    //   //  ||   Replace `id` above with this instead:
+    //   //
+    //   // ```
+    //   // id: { type: 'string', columnName: '_id' },
+    //   // ```
+    // },
     authId: {
-      type: 'string'
+      type: "string",
     },
     ip: {
-      type: 'string'
+      type: "string",
     },
     authenType: {
-      type: 'string'
+      type: "string",
     },
   },
 

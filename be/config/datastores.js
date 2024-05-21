@@ -14,8 +14,6 @@
  */
 
 module.exports.datastores = {
-
-
   /***************************************************************************
    *                                                                          *
    * Your app's default datastore.                                            *
@@ -60,36 +58,36 @@ module.exports.datastores = {
   //     ''
   // },
   default: {
-    adapter: require('sails-mysql'),
-    url: process.env.MYSQL_DB || 'mysql://acc:pass@host:3306/db'
-
+    adapter: require("sails-mysql"),
+    url:
+      process.env.MYSQL_DB ||
+      "mysql://khangpq:KhangPQ!123@127.0.0.1:3306/templatebuilder",
   },
-  mongo: {
-    adapter: 'sails-mongo',
-    url: process.env.MONGO_DB || 'mongodb://acc:pass@host:27017/db'
-
-  },
+  // mongo: {
+  //   adapter: "sails-mongo",
+  //   url: process.env.MONGO_DB || "mongodb://acc:pass@host:27017/db",
+  // },
   redis: {
-    adapter: 'sails-redis',
-    host: process.env.REDIS_HOST || 'host',
-    password: process.env.REDIS_PASS || "pass",
-    auth_pass: process.env.REDIS_PASS || "pass",
+    adapter: "sails-redis",
+    host: process.env.REDIS_HOST || "localhost",
+    password: process.env.REDIS_PASS || "khangpq",
+    auth_pass: process.env.REDIS_PASS || "khangpq",
     // host: 'localhost',
     // password: '',
     // auth_pass: '',
     port: process.env.REDIS_PORT || 6379,
-    prefix: 'obt_' + (process.env.NODE_ENV || 'development') + '_',
+    prefix: "tpe_" + (process.env.NODE_ENV || "development") + "_",
     db: process.env.REDIS_DB || 3,
     retry_strategy: function (options) {
-      if (options.error && options.error.code === 'ECONNREFUSED') {
+      if (options.error && options.error.code === "ECONNREFUSED") {
         // End reconnecting on a specific error and flush all commands with
         // a individual error
-        return new Error('The server refused the connection');
+        return new Error("The server refused the connection");
       }
       if (options.total_retry_time > 1000 * 60 * 60) {
         // End reconnecting after a specific timeout and flush all commands
         // with a individual error
-        return new Error('Retry time exhausted');
+        return new Error("Retry time exhausted");
       }
       if (options.attempt > 10) {
         // End reconnecting with built in error
@@ -97,8 +95,6 @@ module.exports.datastores = {
       }
       // reconnect after
       return Math.min(options.attempt * 100, 3000);
-    }
-
+    },
   },
-
 };
